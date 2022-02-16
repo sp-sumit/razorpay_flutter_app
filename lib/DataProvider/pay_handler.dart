@@ -9,10 +9,10 @@ final payHandler = StateNotifierProvider<PayHandler, Function>(
 );
 
 class PayHandler extends StateNotifier<Function> {
-  PayHandler() : super(PayModel().initState());
+  PayHandler() : super(() {});
 
   final _razorpay = Razorpay();
-  void openCheckout() async {
+  void openCheckout() {
     var options = {
       'key': 'fZjNYgHYivgczqDESUNzw5de',
       'amount': 25,
@@ -26,6 +26,7 @@ class PayHandler extends StateNotifier<Function> {
 
     try {
       _razorpay.open(options);
+      PayModel().initState();
     } catch (e) {
       print(e);
     }
