@@ -20,7 +20,12 @@ class Home extends StatelessWidget {
             Consumer(builder: (context, state, child) {
               return ElevatedButton(
                 onPressed: () async {
-                  state.watch(payHandler.notifier).openCheckout();
+                  final orderId = await state
+                      .watch(payHandler.notifier)
+                      .generateOrderId(2500);
+                  if (orderId != 'false') {
+                    state.watch(payHandler.notifier).openCheckout(orderId);
+                  }
                 },
                 child: const Text('Pay'),
               );

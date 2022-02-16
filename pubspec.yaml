@@ -17,6 +17,7 @@ dependencies:
   razorpay_flutter:
   flutter_riverpod:
   fluttertoast:
+  http:
 
 
 dev_dependencies:

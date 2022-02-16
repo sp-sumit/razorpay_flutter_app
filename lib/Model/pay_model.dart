@@ -12,6 +12,7 @@ class PayModel {
 
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
     Fluttertoast.showToast(msg: "SUCCESS: " + (response.paymentId as String));
+    _razorpay.clear();
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
@@ -21,11 +22,13 @@ class PayModel {
           " - " +
           (response.message as String),
     );
+    _razorpay.clear();
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
     Fluttertoast.showToast(
       msg: "EXTERNAL_WALLET: " + (response.walletName as String),
     );
+    _razorpay.clear();
   }
 }
